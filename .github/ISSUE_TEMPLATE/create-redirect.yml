@@ -1,0 +1,60 @@
+name: Create Redirect
+description: Request the creation of a new redirect.
+title: "[Create Redirect]: "
+labels:
+  - create-redirect
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ACRI Redirect Service
+
+        Complete the information below to request a new redirect.
+
+  - type: input
+    id: slug
+    attributes:
+      label: Redirect Slug
+      description: The path after redirect.acriindia.org.in/
+      placeholder: ijbmrs
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Destination URL
+      description: The full destination URL.
+      placeholder: https://www.example.org
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Redirect Type
+      options:
+        - 301 Permanent
+        - 302 Temporary
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Briefly describe what this redirect is for.
+      placeholder: Official journal website.
+
+  - type: input
+    id: owner
+    attributes:
+      label: Requesting Office / Department
+      placeholder: Office of Information and Systems
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
