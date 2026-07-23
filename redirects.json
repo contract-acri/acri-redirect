@@ -1,0 +1,17 @@
+{
+  "fenilpshah-com": {
+    "url": "https://www.fenilpshah.com",
+    "status": 301,
+    "description": "Fenil Shah's official website"
+  },
+  "ijbmrs": {
+    "url": "https://www.ijbmrs.org",
+    "status": 301,
+    "description": "IJBMRS"
+  },
+  "acri": {
+    "url": "https://www.acriindia.org",
+    "status": 302,
+    "description": "ACRI Main Website"
+  }
+}
