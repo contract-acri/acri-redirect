@@ -1,0 +1,44 @@
+name: Create Redirect
+
+on:
+  issues:
+    types:
+      - labeled
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+
+  create:
+
+    if: github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'create-redirect')
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Parse Issue
+
+        uses: actions/github-script@v7
+
+        with:
+          script: |
+
+            console.log("Redirect request approved.");
+
+      - name: Complete
+
+        run: echo "Workflow placeholder complete."
