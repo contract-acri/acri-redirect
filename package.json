@@ -1,0 +1,20 @@
+{
+  "name": "acri-redirect",
+  "version": "1.0.0",
+  "description": "Official URL Redirect Service for the Ahmedabad Centre for Research and Innovation.",
+  "private": true,
+  "type": "module",
+  "author": "Ahmedabad Centre for Research and Innovation",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public",
+    "start": "wrangler pages dev public"
+  },
+  "devDependencies": {
+    "wrangler": "^4.30.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
