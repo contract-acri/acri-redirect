@@ -2,16 +2,18 @@
   "fenilpshah-com": {
     "url": "https://www.fenilpshah.com",
     "status": 301,
-    "description": "Fenil Shah's official website"
+    "description": "Fenil Shah Official Website"
   },
+
   "ijbmrs": {
     "url": "https://www.ijbmrs.org",
     "status": 301,
-    "description": "IJBMRS"
+    "description": "International Journal of Business & Management Research Studies"
   },
+
   "acri": {
     "url": "https://www.acriindia.org",
-    "status": 302,
-    "description": "ACRI Main Website"
+    "status": 301,
+    "description": "Ahmedabad Centre for Research and Innovation"
   }
 }
