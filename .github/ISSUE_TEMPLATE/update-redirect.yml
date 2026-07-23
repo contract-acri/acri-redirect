@@ -1,0 +1,44 @@
+name: Update Redirect
+description: Request changes to an existing redirect.
+title: "[Update Redirect]: "
+labels:
+  - update-redirect
+
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Update an Existing Redirect
+
+  - type: input
+    id: slug
+    attributes:
+      label: Redirect Slug
+      placeholder: ijbmrs
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: New Destination URL
+      placeholder: https://www.example.org
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Redirect Type
+      options:
+        - 301 Permanent
+        - 302 Temporary
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Update
+      placeholder: Explain why the redirect is being changed.
