@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Cloudflare
+.wrangler/
+
+# Environment Variables
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# Temporary Files
+tmp/
+temp/
+
+# Build Output
+dist/
+build/
