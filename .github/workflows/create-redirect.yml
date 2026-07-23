@@ -11,9 +11,11 @@ permissions:
 
 jobs:
 
-  create:
+  create-redirect:
 
-    if: github.event.label.name == 'approved' && contains(github.event.issue.labels.*.name, 'create-redirect')
+    if: >
+      github.event.label.name == 'approved' &&
+      contains(github.event.issue.labels.*.name, 'create-redirect')
 
     runs-on: ubuntu-latest
 
@@ -22,7 +24,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -30,15 +32,40 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Parse Issue
+      - name: Run Redirect Creator
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node scripts/createRedirect.js
 
+      - name: Commit Changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add redirects.json
+
+          git diff --cached --quiet || git commit -m "Create redirect from #${{ github.event.issue.number }}"
+
+          git push
+
+      - name: Comment on Issue
         uses: actions/github-script@v7
-
         with:
           script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "✅ Redirect successfully created and deployed."
+            });
 
-            console.log("Redirect request approved.");
-
-      - name: Complete
-
-        run: echo "Workflow placeholder complete."
+      - name: Close Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: "closed"
+            });
